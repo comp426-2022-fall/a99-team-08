@@ -1,0 +1,22 @@
+{
+  "name": "world_cup_team_api",
+  "version": "1.0.0",
+  "description": "This API gathers information about your favorite world cup team!",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edcho2019/a99-team-08.git"
+  },
+  "author": "edcho2019, AdityaIyer01",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edcho2019/a99-team-08/issues"
+  },
+  "homepage": "https://github.com/edcho2019/a99-team-08#readme"
+}
