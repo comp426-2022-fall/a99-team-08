@@ -1,22 +1,8 @@
 ## ROLES
 
-### Review Manager
+### Review Manager / Documentation Manager / Front End and Design Lead
 Edward Cho
 
-### Plan Manager
-Edward Cho
-
-### Documentation Manager
-Edward Cho
-
-### Release Manager
+### Plan Manager / Project Manager / Back End and Database Lead
 Aditya Iyer
 
-### Project Manager
-Aditya Iyer
-
-### Front End and Design Lead
-Edward Cho
-
-### Back End and Database Lead
-Aditya Iyer
