@@ -61,9 +61,10 @@ app.use(async (req, res, next) => {
         secure: req.secure,
         statusCode: res.statusCode,
         referer: req.headers.referer,
-        userAgent: req.headers['user-agent']
+        userAgent: req.headers['user-agent'],
+	username: req.session.username
   };
-  await db.run('INSERT INTO UserLog (ip, user, date, time, method, url, protocol, httpVersion, secure, statusCode, referer, userAgent) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);',
+  await db.run('INSERT INTO UserLog (ip, user, date, time, method, url, protocol, httpVersion, secure, statusCode, referer, userAgent, username) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);',
 	       userLog.ip,
 	       userLog.user,
 	       userLog.date,
@@ -75,7 +76,8 @@ app.use(async (req, res, next) => {
 	       userLog.secure,
 	       userLog.statusCode,
 	       userLog.referer,
-	       userLog.userAgent);
+	       userLog.userAgent,
+	       userLog.username);
   next();
 });
 

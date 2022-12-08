@@ -38,7 +38,9 @@ CREATE TABLE UserLog (
   secure INTEGER NOT NULL,
   statusCode INTEGER NOT NULL,
   referer TEXT,
-  userAgent TEXT NOT NULL
+  userAgent TEXT NOT NULL,
+  username TEXT,
+  FOREIGN KEY (username) REFERENCES User (username)
 );
 
 --Insert all 32 teams into Team table
