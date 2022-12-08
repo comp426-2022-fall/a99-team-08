@@ -54,12 +54,26 @@ app.use(async (req, res, next) => {
         userAgent: req.headers['user-agent']
   };
   console.log(userLog);
-  // const command = await db.prepare('INSERT INTO UserLog (ip, user, date, time, method, url, protocol, httpVersion, secure, statusCode, referer, userAgent) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+  await db.run('INSERT INTO UserLog (ip, user, date, time, method, url, protocol, httpVersion, secure, statusCode, referer, userAgent) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);',
+	       userLog.ip,
+	       userLog.user,
+	       userLog.date,
+	       userLog.time,
+	       userLog.method,
+	       userLog.url,
+	       userLog.protocol,
+	       userLog.httpVersion,
+	       userLog.secure,
+	       userLog.statusCode,
+	       userLog.referer,
+	       userLog.userAgent);
   next();
 });
 
-app.get('/app/health/', (req, res) => {
-  
+app.get('/app/health/', async (req, res) => {
+  const db = await dbPromise;
+  const userLogs = await db.all('SELECT * FROM UserLog;');
+  res.send(userLogs);
 });
 
 app.get('/app/', async (req, res) => {
