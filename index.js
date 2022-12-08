@@ -43,7 +43,7 @@ app.get('/app/', async (req, res) => {
     const email = user_info[0].email;
     const team = user_info[0].team;
     const matches = await db.all('SELECT * FROM Match WHERE team1=? OR team2=?;', team, team);
-    const teams = await db.all('SELECT * FROM Team;');
+    const teams = await db.all('SELECT * FROM Team ORDER BY name;');
     res.render('home', { email, username, team, matches, teams });
   }
   else {
@@ -58,7 +58,7 @@ app.get('/app/register/', async (req, res) => {
   }
   else {
     const db = await dbPromise;
-    const teams = await db.all('SELECT * FROM Team;');
+    const teams = await db.all('SELECT * FROM Team ORDER BY name;');
     res.render('register', { teams });
   }
 });
@@ -67,13 +67,13 @@ app.post('/app/register/', async (req, res) => {
   const db = await dbPromise;
   const { email, username, password, passwordRepeat, team } = req.body;
   if (password != passwordRepeat) {
-    const teams = await db.all('SELECT * FROM Team;');
+    const teams = await db.all('SELECT * FROM Team ORDER BY name;');
     res.render('register', { teams, error: "Passwords must match" });
   }
   else {
     const users = await db.all('SELECT email, username FROM User WHERE email=? OR username=?;', email, username);
     if (users.length > 0) {
-      const teams = await db.all('SELECT * FROM Team;');
+      const teams = await db.all('SELECT * FROM Team ORDER BY name;');
       res.render('register', { teams, error: "Email and/or username is already in use" });
     }
     else {

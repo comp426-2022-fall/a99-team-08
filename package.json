@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "nodemon -r esm index.js",
+    "test": "nodemon -r esm index.js --port=5555",
     "start": "node -r esm index.js"
   },
   "repository": {
