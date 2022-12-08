@@ -10,6 +10,15 @@
     <br>
     {{/each}}
 </ul>
+<form action="/app/change_team/" method="post">
+    <label for="team-field">No longer interested in seeing results for {{team}}? Select another team!</label>
+    <select id="team-field" name="team">
+      {{#each teams}}
+        <option value={{name}}>{{name}}</option>
+      {{/each}}
+    </select>
+    <input type="submit" name="changeTeam" value="Change Team">
+</form>
 <form action="/app/logout/" method="post">
     <input type="submit" name="logout" value="Logout"/>
 </form>

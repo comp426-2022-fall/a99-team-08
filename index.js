@@ -39,11 +39,12 @@ app.get('/app/', async (req, res) => {
   const { logged_in, username } = req.session;
   if (logged_in) {
     const db = await dbPromise;
-    const user_info = await db.all('SELECT email, username, team FROM User WHERE username=?', username);
+    const user_info = await db.all('SELECT email, username, team FROM User WHERE username=?;', username);
     const email = user_info[0].email;
     const team = user_info[0].team;
-    const matches = await db.all('SELECT * FROM Match WHERE team1=? OR team2=?', team, team);
-    res.render('home', { email, username, team, matches });
+    const matches = await db.all('SELECT * FROM Match WHERE team1=? OR team2=?;', team, team);
+    const teams = await db.all('SELECT * FROM Team;');
+    res.render('home', { email, username, team, matches, teams });
   }
   else {
     res.redirect('/app/login/');
@@ -98,7 +99,7 @@ app.get('/app/login/', (req, res) => {
 app.post('/app/login/', async (req, res) => {
   const db = await dbPromise;
   const { username, password } = req.body;
-  const users = await db.all('SELECT email, username, password, team FROM User WHERE username=?', username);
+  const users = await db.all('SELECT email, username, password, team FROM User WHERE username=?;', username);
   if (users.length == 0) {
     res.render('login', { error: "Account does not exist" });
   }
@@ -113,13 +114,19 @@ app.post('/app/login/', async (req, res) => {
       res.redirect('/app/');
     }
   }
-})
+});
+
+app.post('/app/change_team/', async (req, res) => {
+  const db = await dbPromise;
+  await db.run('UPDATE User SET team=? WHERE username=?;', req.body.team, req.session.username);
+  res.redirect('/app/');
+});
 
 app.post('/app/logout/', (req, res) => {
   req.session.logged_in = false;
   req.session.username = undefined;
   res.redirect('/app/login/');
-})
+});
 
 app.post('/app/delete_account/', async (req, res) => {
   const db = await dbPromise;
@@ -127,18 +134,18 @@ app.post('/app/delete_account/', async (req, res) => {
   req.session.logged_in = false;
   req.session.username = undefined;
   res.redirect('/app/login/');
-})
+});
 
 app.get('*', (req, res) => {
   res.status(404).send('404 NOT FOUND');
-})
+});
 
 const setup = async () => {
   const db = await dbPromise;
   await db.migrate();
   const server = app.listen(port, () => {
     console.log(`Listening on localhost:${port}`);
-  })
+  });
 }
 
 setup();
