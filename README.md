@@ -1,14 +1,31 @@
-# a99-team-08
-Team 8's Final Project
+# WORLD CUP
+A fun way to follow the World Cup!
 
 ## Summary 
 
-COMP426 final project template boilerplate.
-All your code and documentation goes here.
-Change this text to be a brief description of your final project.
-Put the name of your project in the header above.
-You will change everything below to be the main technical documentation, as outlined below.
+We've created an app for you to see the results and upcoming games of your favorite
+world cup team! After signing up, you have the option to designate your favorite country,
+and our API will give you information on the corresponding team's past, current, and upcoming games.
 
-## Link to API Documentation Here
+## Demo
 
-## Link to Roles Documentation Here
+## Getting Started
+
+1. Clone this repository
+2. Run npm install
+3. Run npm start
+4. Navigate to localhost:[port]/ in your browser
+5. Enjoy!
+
+## API Documentation
+
+see our documentation [here](docs/api_documentation.md)
+
+## Dependencies
+
+
+
+## Roles
+
+see our roles [here](docs/roles.md)
+
