@@ -54,7 +54,7 @@ INSERT INTO Team VALUES ('South Korea');
 INSERT INTO Team VALUES ('Uruguay');
 INSERT INTO Team VALUES ('Ghana');
 
-INSERT INTO Match (team1, team2, date, score) VALUES ('Qatar', 'Ecuador', '2022-11-20', '2-0');
+INSERT INTO Match (team1, team2, date, score) VALUES ('Qatar', 'Ecuador', '2022-11-20', '0-2');
 
 -- Down
 DROP TABLE User;
