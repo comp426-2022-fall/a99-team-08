@@ -34,7 +34,7 @@ CREATE TABLE UserLog (
   secure INTEGER NOT NULL,
   statusCode INTEGER NOT NULL,
   referer TEXT,
-  userAgent TEXT
+  userAgent TEXT NOT NULL
 );
 
 INSERT INTO Team VALUES ('Netherlands');

@@ -31,7 +31,13 @@ app.use(session({
   }
 }));
 
-app.use((req, res, next) => {
+const dbPromise = open({
+  filename: 'data.db',
+  driver: sqlite3.Database
+});
+
+app.use(async (req, res, next) => {
+  const db = await dbPromise;
   const now = new Date();
   const userLog = {
         ip: req.ip,
@@ -44,16 +50,16 @@ app.use((req, res, next) => {
         httpVersion: req.httpVersion,
         secure: req.secure,
         statusCode: res.statusCode,
-        referer: req.headers['referer'],
+        referer: req.headers.referer,
         userAgent: req.headers['user-agent']
   };
   console.log(userLog);
+  // const command = await db.prepare('INSERT INTO UserLog (ip, user, date, time, method, url, protocol, httpVersion, secure, statusCode, referer, userAgent) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
   next();
 });
 
-const dbPromise = open({
-  filename: 'data.db',
-  driver: sqlite3.Database
+app.get('/app/health/', (req, res) => {
+  
 });
 
 app.get('/app/', async (req, res) => {
