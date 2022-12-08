@@ -34,9 +34,13 @@ const dbPromise = open({
 
 app.get('/app/', async (req, res) => {
   const { logged_in, username } = req.session;
-  //const user_info = await db.all();
   if (logged_in) {
-    res.render('home', { username });
+    const db = await dbPromise;
+    const user_info = await db.all('SELECT email, username, team FROM User WHERE username=?', username);
+    const email = user_info[0].email;
+    const team = user_info[0].team;
+    const matches = await db.all('SELECT * FROM Match WHERE team1=? OR team2=?', team, team);
+    res.render('home', { email, username, team, matches });
   }
   else {
     res.redirect('/app/login/');

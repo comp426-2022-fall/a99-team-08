@@ -1,6 +1,15 @@
 <h1>FIFA World Cup</h1>
 <h2>Qatar 2022</h2>
+<p>{{email}}</p>
 <p>{{username}}</p>
+<p>{{team}}</p>
+<ul>
+    {{#each matches}}
+    <li style="font-style:bold">{{team1}} vs {{team2}}    {{score}}</li>
+    <li style="font-style:italic">{{date}} {{time}}</li>
+    <br>
+    {{/each}}
+</ul>
 <form action="/app/logout/" method="post">
     <input type="submit" name="logout" value="Logout"/>
 </form>
