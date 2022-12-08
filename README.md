@@ -23,6 +23,13 @@ see our documentation [here](docs/api_documentation.md)
 
 ## Dependencies
 
+esm
+express
+express-handlebars
+express-session
+minimist
+sqlite
+sqlite3
 
 
 ## Roles
