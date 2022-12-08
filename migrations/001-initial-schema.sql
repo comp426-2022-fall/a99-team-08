@@ -1,24 +1,40 @@
 -- Up
 CREATE TABLE User (
-  email STRING PRIMARY KEY,
-  username STRING UNIQUE,
-  password STRING,
-  team STRING
+  email TEXT PRIMARY KEY,
+  username TEXT UNIQUE,
+  password TEXT,
+  team TEXT
 );
 
 CREATE TABLE Team (
-  name STRING PRIMARY KEY
+  name TEXT PRIMARY KEY
 );
 
 CREATE TABLE Match (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  team1 STRING NOT NULL,
-  team2 STRING NOT NULL,
+  team1 TEXT NOT NULL,
+  team2 TEXT NOT NULL,
   date TEXT NOT NULL,
   time TEXT,
   score TEXT,
   FOREIGN KEY (team1) REFERENCES Team (name),
   FOREIGN KEY (team2) REFERENCES Team (name)
+);
+
+CREATE TABLE UserLog (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  ip TEXT NOT NULL,
+  user TEXT,
+  date TEXT NOT NULL,
+  time TEXT NOT NULL,
+  method TEXT NOT NULL,
+  url TEXT NOT NULL,
+  protocol TEXT NOT NULL,
+  httpVersion TEXT NOT NULL,
+  secure INTEGER NOT NULL,
+  statusCode INTEGER NOT NULL,
+  referer TEXT,
+  userAgent TEXT
 );
 
 INSERT INTO Team VALUES ('Netherlands');
@@ -136,3 +152,4 @@ INSERT INTO Match (team1, team2, date, time) VALUES ('England', 'France', '2022-
 DROP TABLE User;
 DROP TABLE Team;
 DROP TABLE Match;
+DROP TABLE UserLog;

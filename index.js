@@ -4,6 +4,7 @@ import { engine } from 'express-handlebars';
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
 import bcrypt from 'bcrypt';
+import date from 'date-and-time';
 
 const session = require('express-session');
 
@@ -29,6 +30,26 @@ app.use(session({
     sameSite: true
   }
 }));
+
+app.use((req, res, next) => {
+  const now = new Date();
+  const userLog = {
+        ip: req.ip,
+        user: req.user,
+        date: date.format(now, 'YYYY-MM-DD'),
+	time: date.format(now, 'hh:mm:ss A [GMT]Z'),
+	method: req.method,
+	url: req.url,
+        protocol: req.protocol,
+        httpVersion: req.httpVersion,
+        secure: req.secure,
+        statusCode: res.statusCode,
+        referer: req.headers['referer'],
+        userAgent: req.headers['user-agent']
+  };
+  console.log(userLog);
+  next();
+});
 
 const dbPromise = open({
   filename: 'data.db',
