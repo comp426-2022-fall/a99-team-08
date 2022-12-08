@@ -6,6 +6,9 @@
 </head>
 <body>
 
+    {{#if error}}
+      <div style="background: maroon; color: white; padding: 12px; margin-bottom: 12px;"><h2>{{error}}</h2></div>
+    {{/if}}
     {{{body}}}
 
 </body>
