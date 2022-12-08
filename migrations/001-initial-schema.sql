@@ -1,4 +1,5 @@
 -- Up
+-- Create table of users
 CREATE TABLE User (
   email TEXT PRIMARY KEY,
   username TEXT UNIQUE,
@@ -6,10 +7,12 @@ CREATE TABLE User (
   team TEXT
 );
 
+--Create table of teams
 CREATE TABLE Team (
   name TEXT PRIMARY KEY
 );
 
+--Create table of all confirmed matches
 CREATE TABLE Match (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   team1 TEXT NOT NULL,
@@ -21,6 +24,7 @@ CREATE TABLE Match (
   FOREIGN KEY (team2) REFERENCES Team (name)
 );
 
+--Create table of logs
 CREATE TABLE UserLog (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   ip TEXT NOT NULL,
@@ -37,6 +41,7 @@ CREATE TABLE UserLog (
   userAgent TEXT NOT NULL
 );
 
+--Insert all 32 teams into Team table
 INSERT INTO Team VALUES ('Netherlands');
 INSERT INTO Team VALUES ('Senegal');
 INSERT INTO Team VALUES ('Ecuador');
@@ -70,7 +75,7 @@ INSERT INTO Team VALUES ('South Korea');
 INSERT INTO Team VALUES ('Uruguay');
 INSERT INTO Team VALUES ('Ghana');
 
--- past matches
+-- Insert past matches into Match table
 INSERT INTO Match (team1, team2, date, score) VALUES ('Qatar', 'Ecuador', '2022-11-20', '0-2');
 INSERT INTO Match (team1, team2, date, score) VALUES ('England', 'Iran', '2022-11-21', '6-2');
 INSERT INTO Match (team1, team2, date, score) VALUES ('Senegal', 'Netherlands', '2022-11-21', '0-2');
@@ -140,13 +145,11 @@ INSERT INTO Match (team1, team2, date, score) VALUES ('Brazil', 'South Korea', '
 INSERT INTO Match (team1, team2, date, score) VALUES ('Morocco', 'Spain', '2022-12-06', '0(3)-0(0)');
 INSERT INTO Match (team1, team2, date, score) VALUES ('Portugal', 'Switzerland', '2022-12-06', '6-1');
 
--- upcoming matches
+-- Insert upcoming matches into Match table
 INSERT INTO Match (team1, team2, date, time) VALUES ('Croatia', 'Brazil', '2022-12-09','10:00:00');
 INSERT INTO Match (team1, team2, date, time) VALUES ('Netherlands', 'Argentina', '2022-12-09','14:00:00');
 INSERT INTO Match (team1, team2, date, time) VALUES ('Morocco', 'Portugal', '2022-12-10','10:00:00');
 INSERT INTO Match (team1, team2, date, time) VALUES ('England', 'France', '2022-12-10','14:00:00');
-
-
 
 -- Down
 DROP TABLE User;
