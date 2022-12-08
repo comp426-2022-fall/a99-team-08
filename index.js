@@ -3,12 +3,15 @@ import minimist from 'minimist';
 import { engine } from 'express-handlebars';
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
+import bcrypt from 'bcrypt';
 
 const session = require('express-session');
 
 const args = minimist(process.argv.slice(2));
 
 const port = args.port || 5000;
+
+const SALT_ROUNDS = 10;
 
 const app = express();
 
@@ -73,7 +76,8 @@ app.post('/app/register/', async (req, res) => {
       res.render('register', { teams, error: "Email and/or username is already in use" });
     }
     else {
-      await db.run('INSERT INTO User (email, username, password, team) VALUES (?, ?, ?, ?);', email, username, password, team);
+      const passwordHash = await bcrypt.hash(password, SALT_ROUNDS);
+      await db.run('INSERT INTO User (email, username, password, team) VALUES (?, ?, ?, ?);', email, username, passwordHash, team);
       req.session.logged_in = true;
       req.session.username = username;
       res.redirect('/app/');
@@ -94,14 +98,20 @@ app.get('/app/login/', (req, res) => {
 app.post('/app/login/', async (req, res) => {
   const db = await dbPromise;
   const { username, password } = req.body;
-  const users = await db.all('SELECT email, username, team FROM User WHERE username=? AND password=?;', username, password);
+  const users = await db.all('SELECT email, username, password, team FROM User WHERE username=?', username);
   if (users.length == 0) {
-    res.render("login", { error: "Invalid username or password" });
+    res.render('login', { error: "Account does not exist" });
   }
   else {
-    req.session.logged_in = true;
-    req.session.username = username;
-    res.redirect('/app/');
+    const password_match = await bcrypt.compare(password, users[0].password);
+    if (!password_match) {
+      res.render('login', { error: "Incorrect password" });
+    }
+    else {
+      req.session.logged_in = true;
+      req.session.username = username;
+      res.redirect('/app/');
+    }
   }
 })
 
