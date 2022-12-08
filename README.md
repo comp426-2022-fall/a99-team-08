@@ -19,6 +19,8 @@ and our API will give you information on the corresponding team's past, current,
 
 ## API Documentation
 
+see our documentation [here](docs/api_documentation.md)
+
 ## Roles
 
 see our roles [here](docs/roles.md)
