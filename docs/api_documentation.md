@@ -27,6 +27,10 @@ If the user inputs their login information into the text boxes, then the app sen
 does not exist, return the error "Account does not exist". If the password is incorrect, return the error "Incorrect password". Otherwise, set the session
 variable logged_in = true and redirect the user to /app/.
 
+### HTTP POST /app/change_team/
+Endpoint for changing teams.  
+Changes the user's favorite team in the database. Redirects to /app/.
+
 ### HTTP POST /app/logout/
 Endpoint for deleting account.  
 Sets the session variable logged_in = false and username = undefined. Redirects page to /login/.
