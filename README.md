@@ -1,5 +1,5 @@
-# a99-team-08
-World Cup
+# WORLD CUP
+A fun way to follow the World Cup!
 
 ## Summary 
 
