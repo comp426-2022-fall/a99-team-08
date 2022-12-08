@@ -13,7 +13,7 @@ If the user clicks the register link, they are redirected to this endpoint. If t
 page where the user can register a new account.
 
 ### HTTP POST /app/register/
-Endpoint for creating a new account.
+Endpoint for creating a new account.  
 If the user inputs their new account information into the text boxes, then the app sends a POST request with the body "{email, username, password, passwordRepeat, team}." If the password is not the same as the repeated password, then the user will receive a "Passwords must match" error. If the username or email is already in use, the user will receive a 
 "Email and/or username is already in use" error. Otherwise, the information is considered valid, and the app sets the session variable logged_in = true, and redirects to /app/.
 
