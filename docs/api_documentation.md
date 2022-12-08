@@ -32,9 +32,12 @@ Endpoint for changing teams.
 Changes the user's favorite team in the database. Redirects to /app/.
 
 ### HTTP POST /app/logout/
-Endpoint for deleting account.  
+Endpoint for logging out of account.  
 Sets the session variable logged_in = false and username = undefined. Redirects page to /login/.
 
 ### HTTP POST /app/delete_account/
 Endpoint for deleting account.  
 Deletes the user from the database. Sets the session variable logged_in = false and username = undefined. Redirects page to /login/.
+
+### HTTP GET /app/health/
+Endpoint for assessing the health of the application and viewing logs.
