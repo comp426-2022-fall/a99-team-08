@@ -1,6 +1,6 @@
 ## Endpoints for World Cup
 
-Welcome! Here, you will see that the endpoints in our application.
+Welcome! Here, you will see the endpoints in our application.
 
 ### app.get('/app/', async (req, res)
 If the user is already logged in, the response will render a 'home' page with the relevant user's information, such as their email, username, favorite team,
