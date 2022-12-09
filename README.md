@@ -23,14 +23,14 @@ see our documentation [here](docs/api_documentation.md)
 
 ## Dependencies
 
-bcrypt
-date-and-time
-esm
-express
-express-handlebars
-express-session
-minimist
-sqlite
+bcrypt__
+date-and-time__
+esm__
+express__
+express-handlebars__
+express-session__
+minimist__
+sqlite__
 sqlite3
 
 ## Roles
