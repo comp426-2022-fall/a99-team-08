@@ -1,20 +1,20 @@
-## Planning
+## Features and Functionality
 
 * User database
-  * give users a way to login (username, password)
-  * give users a way to have a 'favorite' team
+  * Provides users a way to login and logout (username, password)
+  * Provides users a way to select a 'favorite' team
 * Team database
-  * store team matches
-  * app will query this database
-* make a way for the user to register account
-* make a way for the user to delete account
-* make a way for the user to logout
-* when user inputs their favorite team, app will show the team's past and upcoming matches
+  * Store all 32 teams in the World Cup
+* Match database
+  * Store all previous and upcoming matches
+  * App will query this database to find all matches for a particular team
+* Allow for the user to register and delete an account
+* When user inputs their favorite team, app will show the team's past and upcoming matches
 
-## Future Possible Additions
+## Future Plans
 
-* add current scores being played in real time using a publicly available API
-* make an option for a user to follow multiple teams
+* Add current scores being played in real time using a publicly available API
+* Make an option for a user to follow multiple teams
 * Add a nation's team flag to your account depending on which team he/she follows
-* add highlight video links to each match
-* show a list of players on each team
+* Add highlight video links to each match
+* Show a list of players on each team
