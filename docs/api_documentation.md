@@ -3,7 +3,7 @@
 Welcome! Here, you will see the endpoints in our application.
 
 ### HTTP GET /app/
-Endpoint for accessing the home page.
+<i>Endpoint for accessing the home page.</i>   
 If the user is already logged in, the response will render a 'home' page with the relevant user's information, such as their email, username, favorite team,
 and the matches that their team is playing. Otherwise, this endpoint redirects to '/app/login/'.
 
