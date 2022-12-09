@@ -1,7 +1,7 @@
 {
   "name": "world_cup",
   "version": "1.0.0",
-  "description": "This API gathers information about your favorite world cup team!",
+  "description": "An application for viewing information about your favorite world cup team",
   "main": "index.js",
   "directories": {
     "doc": "docs"
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/edcho2019/a99-team-08.git"
+    "url": "git+https://github.com/comp426-2022-fall/a99-team-08.git"
   },
   "author": "edcho2019, AdityaIyer01",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/edcho2019/a99-team-08/issues"
+    "url": "https://github.com/comp426-2022-fall/a99-team-08/issues"
   },
-  "homepage": "https://github.com/edcho2019/a99-team-08#readme",
+  "homepage": "https://github.com/comp426-2022-fall/a99-team-08#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "date-and-time": "^2.4.1",
