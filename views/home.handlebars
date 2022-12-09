@@ -1,17 +1,17 @@
-<h1>FIFA World Cup</h1>
-<h2>Qatar 2022</h2>
-<p>{{email}}</p>
-<p>{{username}}</p>
-<p>{{team}}</p>
-<ul>
+<h1 style="text-align: center;">FIFA World Cup</h1>
+<h2 style="text-align: center;">Qatar 2022</h2>
+<h3>Matches for <b>{{team}}</b></h3>
+<ul style="list-style: none; margin-left: 1em;">
     {{#each matches}}
-    <li style="font-style:bold">{{team1}} vs {{team2}}    {{score}}</li>
-    <li style="font-style:italic">{{date}} {{time}}</li>
+    <li>{{team1}} vs {{team2}}</li>
+    <li><b>{{score}}</b></li>
+    <li style="font-style: italic;">{{date}} {{time}}</li>
     <br>
     {{/each}}
 </ul>
 <form action="/app/change_team/" method="post">
-    <label for="team-field">No longer interested in seeing results for {{team}}? Select another team!</label>
+    <p>No longer interested in seeing matches for {{team}}?</p>
+    <label for="team-field">Select another team!</label>
     <select id="team-field" name="team">
       {{#each teams}}
         <option value={{name}}>{{name}}</option>
@@ -19,6 +19,9 @@
     </select>
     <input type="submit" name="changeTeam" value="Change Team">
 </form>
+<h3>Account Information</h3>
+<p>Email: <b>{{email}}</b></p>
+<p>Username: <b>{{username}}</b></p>
 <form action="/app/logout/" method="post">
     <input type="submit" name="logout" value="Logout"/>
 </form>

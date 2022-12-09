@@ -1,16 +1,16 @@
 <form action="/app/register/" method="post">
   <div>
-    <label for="email-field">email</label>
+    <label for="email-field">Email:</label>
     <input type="email" id="email-field" name="email" />
   </div>
   <div>
-    <label for="username-field">username</label>
+    <label for="username-field">Username:</label>
     <input type="text" id="username-field" name="username" minlength="2" maxlength="20" />
   </div>
   <div>
-    <label for="password-field">password</label>
+    <label for="password-field">Password:</label>
     <input type="password" id="password-field" name="password" minlength="8" maxlength="20" />
-    <label style="margin-left: 1em" for="password-repeat-field">repeat password</label>
+    <label style="margin-left: 1em;" for="password-repeat-field">Repeat Password:</label>
     <input type="password" id="password-repeate-field" name="passwordRepeat" minlength="8" maxlength="20" />
   </div>
   <div>
@@ -21,6 +21,6 @@
       {{/each}}
     </select>
   </div>
-  <button type="submit">register</button>
+  <button type="submit">Register</button>
 </form>
 <p>Already have an account? <a href="/app/login/">Login</a></p>
