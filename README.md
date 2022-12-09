@@ -19,7 +19,7 @@ and our API will give you information on the corresponding team's past, current,
 
 ## API Documentation
 
-see our documentation [here](docs/api_documentation.md)
+See our documentation [here](docs/api_documentation.md).
 
 ## Dependencies
 
@@ -35,5 +35,5 @@ sqlite3
 
 ## Roles
 
-see our roles [here](docs/roles.md)
+See our roles [here](docs/roles.md).
 
